@@ -1,0 +1,62 @@
+#%RAML 1.0
+title: sample
+baseUri: http://localhost:8081
+types:
+  postinputs: !include datatypes/postdatatype.raml
+  postoutput: !include datatypes/postresponsedataType.raml
+
+/createaccount:
+  post:
+    body:
+      application/json:
+        type: postinputs
+        example: !include examples/postexample.raml
+            
+    responses:
+      200:
+        body:
+          application/json:
+            type: postoutput
+            example: !include examples/postresponseexample.raml
+  /{id}:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
+              example:
+                
+                  {
+                  "id":123,
+                  "name":"vamshi",
+                  "phone":9000,
+                  "email":"lop@ert"
+                   }
+    put:
+       responses:
+         200:
+           body:
+             application/json:
+               example:
+                 {
+                  "id":123,
+                  "name":"vamshi",
+                  "phone":9000,
+                  "email":"lop@ert"
+               }
+    delete:
+      responses:
+        200:
+          body:
+            application/json:
+                example:
+                   {
+                  "message" : "record deleted successfully"
+                     } 
+
+
+
+
+
+
+
